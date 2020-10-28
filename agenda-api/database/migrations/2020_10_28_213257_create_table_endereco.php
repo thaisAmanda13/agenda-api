@@ -15,11 +15,11 @@ class CreateTableEndereco extends Migration
     {
         Schema::create('endereco', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cep');
-            $table->string('rua');
-            $table->string('bairro');
-            $table->string('cidade');
-            $table->string('estado');
+            $table->string('cep',9);
+            $table->string('rua',100);
+            $table->string('bairro',100);
+            $table->string('cidade',100);
+            $table->string('estado',50);
             $table->timestamps();
 
         });

@@ -16,8 +16,8 @@ class CreateTableContato extends Migration
         Schema::create('contato', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome',100);
-            $table->char('cpf',11);
-            $table->string('email');
+            $table->char('cpf',11)->unique();
+            $table->string('email')->unique();
             $table->date('dataNascimento');
             $table->timestamps();
         });
