@@ -15,10 +15,10 @@ class CreateTableContato extends Migration
     {
         Schema::create('contato', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('cpf');
+            $table->string('nome',100);
+            $table->char('cpf',11);
             $table->string('email');
-            $table->timestamps('dataNascimento');
+            $table->date('dataNascimento');
             $table->timestamps();
         });
     }
