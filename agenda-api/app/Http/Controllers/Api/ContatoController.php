@@ -6,24 +6,29 @@ use Illuminate\Http\Request;
 
 class ContatoController extends Controller
 {
+    private $contato;
+
     public function index(){
-        try{
-            $contato = Contato::getContatosRecentes(15);
-  
-            if(count($contato) > 0)
-                $mensagem = "Contatos Recentes";
-            else
-                $mensagem = "Não há nada de novo!";
+        $data = ['data'=> $this->contato->paginete(15)];
+        return response()->json($data);
 
-            return view('site.home', compact('contato', 'mensagem'));
-
-        }catch(Exception $exception){
-            Alert::error('Erro', 'O sistema está com algum problema. Tente novamente!');
-            return back();
-        }
     }
-    
     public function show(Contato $id){
-        return $id;
+        $data = ['data'=> $id];
+        return response()->json($data);
+
+    }
+
+    public function store(Request $request){
+        try{
+
+            $contatoData = $request->all();
+            $this->contato->create($contatoData);
+
+            return response()->json(['msg'=>'Contato adicionado com sucesso!!', 201]);
+        }catch(Exception $erro){
+            // if(config('app.debug'))
+        }
+        
     }
 }
