@@ -23,15 +23,15 @@ class CreateTableContato extends Migration
             $table->timestamps();
             $table->bigInteger('enderecoId')->unsigned();
             $table->bigInteger('telefoneId')->unsigned();
-            $table->foreign('telefoneId')->references('id')->on('telefone');
-            $table->foreign('enderecoId')->references('id')->on('endereco');
+        $table->foreign('telefoneId')->references('id')->on('telefone');
+        $table->foreign('enderecoId')->references('id')->on('endereco');
         });
 
     //    Schema::table('contato', function($table) {
-            
+           
         
-    //         // $table->foreign('FK_contato_endereco')->references('id')
-    //         // ->on('endereco')->onDelete('cascade')->on;
+    // //         // $table->foreign('FK_contato_endereco')->references('id')
+    // //         // ->on('endereco')->onDelete('cascade')->on;
     //     });
     }
 
