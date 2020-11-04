@@ -14,25 +14,25 @@ class CreateTableContato extends Migration
     public function up()
     {
 
-        // Schema::create('contato', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('nome',100);
-        //     $table->char('cpf',11)->unique();
-        //     $table->string('email')->unique();
-        //     $table->date('dataNascimento');
-        //     $table->timestamps();
-        //     $table->integer('enderecoId')->unsigned();
-        //     $table->integer('telefoneId')->unsigned();
-        // });
+        Schema::create('contato', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome',100);
+            $table->char('cpf',11)->unique();
+            $table->string('email')->unique();
+            $table->date('dataNascimento');
+            $table->timestamps();
+            $table->bigInteger('enderecoId')->unsigned();
+            $table->bigInteger('telefoneId')->unsigned();
+            $table->foreign('telefoneId')->references('id')->on('telefone');
+            $table->foreign('enderecoId')->references('id')->on('endereco');
+        });
 
-       // Schema::table('contato', function($table) {
-        //     $table->foreign('telefoneId')->references('id')->on('telefone');
-        //     $table->foreign('enderecoId')->references('id')->on('endereco');
+    //    Schema::table('contato', function($table) {
+            
         
-        //     //verificar se ta correto isso aqui qnd possivel
-        //     // $table->foreign('FK_contato_endereco')->references('id')
-        //     // ->on('endereco')->onDelete('cascade')->on;
-        // });
+    //         // $table->foreign('FK_contato_endereco')->references('id')
+    //         // ->on('endereco')->onDelete('cascade')->on;
+    //     });
     }
 
     /**
