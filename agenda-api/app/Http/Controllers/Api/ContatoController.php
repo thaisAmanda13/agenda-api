@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
-use app\Models\Contato;
+use App\Models\Contato;
 use Exception;
 
 
 class ContatoController extends Controller
 {
-    private $contato;
+    // private $contato;
 
     public function index(){
         $data = ['data'=> $this->contato->paginete(15)];
@@ -24,12 +25,14 @@ class ContatoController extends Controller
 
     public function store(Request $request){
         try{
+            $contato = new Contato();
             $contatoData = $request->all();
-            $this->contato->create($contatoData);
+            $contato::create($contatoData);
 
             return response()->json(['msg'=>'Contato adicionado com sucesso!!', 201]);
         
         }catch(Exception $erro){
+            return response()->json(['msg'=>$erro->getMessage(), 201]);
             // if(config('app.debug')){
                 // return response()->json(ApiError::errorMessage($erro->getMessage(), 1010));
             // }
