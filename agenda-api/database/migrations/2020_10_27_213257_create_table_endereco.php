@@ -20,8 +20,8 @@ class CreateTableEndereco extends Migration
             $table->string('bairro',100);
             $table->string('cidade',100);
             $table->string('estado',50);
-            $table->timestamps();
-
+            $table->bigInteger('contatoId')->unsigned();
+            $table->foreign('contatoId')->references('id')->on('contato');
         });
     }
 

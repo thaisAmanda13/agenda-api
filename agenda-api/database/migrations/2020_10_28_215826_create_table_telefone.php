@@ -18,7 +18,8 @@ class CreateTableTelefone extends Migration
             $table->string('comercial',15);
             $table->string('residencial',15);
             $table->string('celular',15);
-            $table->timestamps();
+            $table->bigInteger('ContatoId')->unsigned();
+            $table->foreign('ContatoId')->references('id')->on('Contato');
         });
     }
 
