@@ -10,14 +10,16 @@ use Exception;
 
 class ContatoController extends Controller
 {
-    // private $contato;
+    private $contato;
 
     public function index(){
-        $data = ['data'=> $this->contato->paginete(15)];
+        echo '$contato';
+        $data = ['data'=> $this->contato->paginate(15)];
         $contato = json_encode($data);
         echo '$contato';
         return view('site.home',compact('contato'));
     }
+    
     public function show(Contato $id){
         $data = ['data'=> $id];
         return response()->json($data);
